@@ -64,53 +64,74 @@ const Services = () => {
             
             {/* Service Card 1: Workshops */}
             <Card3D className="h-auto min-h-[400px] md:h-[450px] w-full">
-              <div className="absolute top-0 right-0 bottom-0 left-0 opacity-30" style={{ backgroundImage: 'radial-gradient(rgba(255,255,255,0.15) 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
+              <div className="absolute top-0 right-0 bottom-0 left-0 opacity-30" style={{ backgroundImage: 'radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
               
               <div className="card-element relative w-full h-48 md:h-64 border bg-ebru-indigo/80 backdrop-blur-lg rounded-[2rem] overflow-hidden mb-6 flex items-center justify-center border-white/20 shadow-inner">
-                <svg className="absolute inset-0 w-full h-full z-0 pointer-events-none opacity-40" preserveAspectRatio="none" viewBox="0 0 400 256">
-                  <path d="M50 128 Q 150 50, 200 128 T 350 128" fill="none" stroke="rgba(217,119,6,0.4)" strokeWidth="2" strokeDasharray="6 6"></path>
-                  <path d="M50 148 Q 150 70, 200 148 T 350 148" fill="none" stroke="rgba(153,27,27,0.3)" strokeWidth="1.5"></path>
-                  <circle r="4" fill="#d97706" className="opacity-90">
-                    <animateMotion repeatCount="indefinite" dur="4s" keyPoints="0;1" keyTimes="0;1" path="M50 128 Q 150 50, 200 128 T 350 128"></animateMotion>
-                  </circle>
-                  <circle r="3" fill="#ffffff" className="opacity-80">
-                    <animateMotion repeatCount="indefinite" dur="3s" path="M50 148 Q 150 70, 200 148 T 350 148"></animateMotion>
-                  </circle>
-                </svg>
+                {/* Surface Tension & Pigment Analysis Schematic */}
+                <div className="relative w-full h-full p-6 flex items-center justify-center">
+                  <svg className="w-full h-full max-w-[320px]" viewBox="0 0 320 180">
+                    {/* Technical Grid Overlay */}
+                    <path d="M0 90 L320 90 M160 0 L160 180" stroke="white" strokeWidth="0.5" strokeOpacity="0.1" />
+                    
+                    {/* Tray Boundary */}
+                    <rect x="20" y="20" width="280" height="140" fill="none" stroke="white" strokeWidth="1" strokeOpacity="0.2" />
+                    <text x="25" y="32" fill="white" fontSize="5" opacity="0.4" className="font-mono tracking-tighter">SURFACE_TENSION_MONITOR // V2.0</text>
+                    
+                    {/* Expanding Pigment Rings with Technical Data */}
+                    <g>
+                      {[
+                        { cx: 100, cy: 80, r: 40, color: "#d97706", delay: "0s" },
+                        { cx: 220, cy: 110, r: 30, color: "#991b1b", delay: "1.5s" }
+                      ].map((ring, i) => (
+                        <g key={i}>
+                           <circle cx={ring.cx} cy={ring.cy} r="0" fill="none" stroke={ring.color} strokeWidth="0.5" strokeOpacity="0.6">
+                             <animate attributeName="r" from="0" to={ring.r} dur="4s" repeatCount="indefinite" begin={ring.delay} />
+                             <animate attributeName="opacity" values="0.6;0" dur="4s" repeatCount="indefinite" begin={ring.delay} />
+                           </circle>
+                           {/* Coordinate Marker */}
+                           <line x1={ring.cx} y1={ring.cy} x2={ring.cx + 20} y2={ring.cy - 20} stroke="white" strokeWidth="0.5" strokeOpacity="0.3">
+                              <animate attributeName="opacity" values="0;0.5;0" dur="4s" repeatCount="indefinite" begin={ring.delay} />
+                           </line>
+                           <text x={ring.cx + 22} y={ring.cy - 22} fill="white" fontSize="4" opacity="0">
+                              X:{ring.cx} Y:{ring.cy} R:VAR
+                              <animate attributeName="opacity" values="0;0.5;0" dur="4s" repeatCount="indefinite" begin={ring.delay} />
+                           </text>
+                        </g>
+                      ))}
+                    </g>
+                    
+                    {/* Vertical Scan Line */}
+                    <g>
+                      <line x1="0" y1="20" x2="0" y2="160" stroke="white" strokeWidth="1" strokeOpacity="0.3">
+                        <animate attributeName="x1" from="20" to="300" dur="5s" repeatCount="indefinite" />
+                        <animate attributeName="x2" from="20" to="300" dur="5s" repeatCount="indefinite" />
+                      </line>
+                      <text x="20" y="170" fill="white" fontSize="5" opacity="0.6" className="font-mono">
+                         SCAN_STATUS: OK // DISTRIBUTION_STABLE
+                         <animate attributeName="x" from="20" to="240" dur="5s" repeatCount="indefinite" />
+                      </text>
+                    </g>
 
-                <div className="relative z-10 w-full h-full flex items-center justify-between px-4 md:px-12">
-                  <div className="flex flex-col gap-6 md:gap-10">
-                    <div className="flex items-center gap-3 p-2 md:p-3 rounded-fluid bg-ebru-indigo border border-white/20 shadow-xl transform transition-transform hover:scale-105">
-                      <div className="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full bg-ebru-ochre/20 text-ebru-ochre">
-                        <iconify-icon icon="solar:pen-new-round-linear" width="20" height="20"></iconify-icon>
-                      </div>
-                      <div className="hidden sm:block pr-3">
-                        <div className="text-[10px] font-semibold text-white tracking-wider uppercase">Brush</div>
-                      </div>
-                    </div>
-                  </div>
+                    {/* Corner Markers */}
+                    <path d="M20 30 V20 H30 M290 20 H300 V30 M300 150 V160 H290 M30 160 H20 V150" fill="none" stroke="white" strokeWidth="1" strokeOpacity="0.5" />
+                  </svg>
+                </div>
 
-                  <div className="relative group">
-                    <div className="absolute inset-0 bg-ebru-ochre/30 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-ebru-indigo to-black border border-ebru-ochre/40 shadow-[0_0_30px_rgba(217,119,6,0.15)] flex items-center justify-center relative z-10 animate-fluid">
-                      <iconify-icon icon="solar:water-drop-linear" width="32" height="32" class="text-ebru-ochre"></iconify-icon>
-                    </div>
-                    <div className="absolute -bottom-8 md:-bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-2 whitespace-nowrap px-3 py-1.5 rounded-fluid bg-white/10 border border-white/30 backdrop-blur-md">
-                      <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></div>
-                      <span className="text-[9px] font-bold text-white tracking-widest uppercase">Tragacanth Basin</span>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col gap-6 md:gap-10">
-                    <div className="flex items-center justify-end gap-3 p-2 md:p-3 rounded-fluid bg-ebru-indigo border border-white/20 shadow-xl transform transition-transform hover:scale-105">
-                      <div className="hidden sm:block pl-3 text-right">
-                        <div className="text-[10px] font-semibold text-white tracking-wider uppercase">Paper</div>
+                <div className="absolute inset-x-0 bottom-12 flex items-center justify-center pointer-events-none">
+                   <div className="flex items-center gap-6">
+                      <div className="flex flex-col items-center gap-1">
+                        <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-white/40">
+                          <iconify-icon icon="solar:bottle-linear" width="16" height="16"></iconify-icon>
+                        </div>
+                        <span className="text-[7px] text-white/40 font-bold tracking-widest uppercase">PIGMENT</span>
                       </div>
-                      <div className="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/10 text-white">
-                        <iconify-icon icon="solar:document-linear" width="20" height="20"></iconify-icon>
+                      <div className="flex flex-col items-center gap-1">
+                        <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-white/40">
+                          <iconify-icon icon="solar:test-tube-linear" width="16" height="16"></iconify-icon>
+                        </div>
+                        <span className="text-[7px] text-white/40 font-bold tracking-widest uppercase">OX GALL</span>
                       </div>
-                    </div>
-                  </div>
+                   </div>
                 </div>
               </div>
               
@@ -143,29 +164,50 @@ const Services = () => {
                   <div className="flex-1 p-4 md:p-6 flex flex-col relative text-[11px]">
                     <div className="flex-1 flex pr-2 pl-2 relative items-center justify-between">
                       <div className="flex flex-col items-center gap-3 z-10 w-16 md:w-20">
-                        <div className="flex transition-colors text-ebru-ochre bg-ebru-ochre/10 w-10 h-10 md:w-12 md:h-12 border-ebru-ochre/30 border rounded-fluid relative shadow-[0_0_15px_rgba(217,119,6,0.15)] items-center justify-center">
-                          <iconify-icon icon="solar:dropper-minimalistic-linear" width="24" height="24"></iconify-icon>
+                        <div className="flex transition-colors text-ebru-red bg-ebru-red/10 w-10 h-10 md:w-12 md:h-12 border-ebru-red/30 border rounded-fluid relative shadow-[0_0_15px_rgba(153,27,27,0.15)] items-center justify-center">
+                          <iconify-icon icon="solar:palette-linear" width="24" height="24"></iconify-icon>
                         </div>
                         <span className="text-[9px] text-white font-semibold uppercase tracking-widest">Pigment</span>
                       </div>
 
+                      {/* Tulip (Lale) Drawing Animation */}
                       <div className="relative z-10 flex flex-col items-center gap-2 px-4">
-                        <div className="w-full h-[2px] bg-white/20 rounded-full w-24 relative overflow-hidden">
-                           <div className="absolute top-0 left-0 h-full bg-gradient-to-r from-ebru-ochre to-ebru-red w-[60%] animate-pulse"></div>
-                        </div>
+                        <svg className="w-24 h-24" viewBox="0 0 100 100">
+                          {/* Stylized Bloom */}
+                          <path 
+                             d="M50 80 Q50 50 20 40 Q50 30 50 10 Q50 30 80 40 Q50 50 50 80" 
+                             fill="none" 
+                             stroke="white" 
+                             strokeWidth="1.5"
+                             strokeDasharray="200"
+                             strokeDashoffset="200"
+                          >
+                            <animate attributeName="stroke-dashoffset" from="200" to="0" dur="4s" repeatCount="indefinite" />
+                            <animate attributeName="stroke" values="#991b1b; white; #d97706; #991b1b" dur="8s" repeatCount="indefinite" />
+                          </path>
+                          {/* Stylus (Bız) following the path */}
+                          <circle r="2" fill="white">
+                            <animateMotion path="M50 80 Q50 50 20 40 Q50 30 50 10 Q50 30 80 40 Q50 50 50 80" dur="4s" repeatCount="indefinite" />
+                          </circle>
+                        </svg>
                       </div>
 
                       <div className="flex flex-col gap-3 z-10 w-28 md:w-32">
-                        <div className="flex items-center gap-3 bg-ebru-indigo/90 border border-white/20 p-2 rounded-xl shadow-lg">
-                          <div className="w-6 h-6 rounded-full bg-ebru-red/20 flex items-center justify-center text-ebru-red border border-ebru-red/30">
-                             <iconify-icon icon="solar:palette-linear" width="14" height="14"></iconify-icon>
+                        <div className="flex items-center gap-3 bg-ebru-indigo/90 border border-white/20 p-2 rounded-xl shadow-lg relative overflow-hidden group">
+                          {/* Pulsating effect */}
+                          <div className="absolute inset-0 bg-white/5 animate-pulse"></div>
+                          <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-white border border-white/30 relative z-10">
+                             <iconify-icon icon="solar:mask-hiring-linear" width="14" height="14"></iconify-icon>
                           </div>
-                          <div className="flex flex-col w-full">
+                          <div className="flex flex-col w-full relative z-10">
                             <div className="flex justify-between items-center mb-1">
-                              <span className="text-[9px] font-bold text-white leading-none">Mixing</span>
-                              <span className="text-[8px] font-bold text-white">80%</span>
+                              <span className="text-[8px] font-bold text-white leading-none tracking-tight uppercase">Motif Resolution</span>
                             </div>
-                            <div className="w-full h-1 bg-white/20 rounded-full overflow-hidden"><div className="w-[80%] h-full bg-ebru-red"></div></div>
+                            <div className="w-full h-1 bg-white/20 rounded-full overflow-hidden">
+                              <div className="h-full bg-white">
+                                <animate attributeName="width" from="0%" to="100%" dur="4s" repeatCount="indefinite" />
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -174,11 +216,11 @@ const Services = () => {
                     <div className="mt-5 pt-4 border-t border-white/20 text-[10px] text-white font-medium flex flex-col gap-2">
                       <div className="flex gap-2 items-center">
                         <span className="text-ebru-ochre"><iconify-icon icon="solar:check-circle-linear"></iconify-icon></span>
-                        <span>Preparing Tragacanth basin viscosity</span>
+                        <span>Stylus pattern manipulation</span>
                       </div>
                       <div className="flex gap-2 items-center">
                          <span className="text-ebru-ochre"><iconify-icon icon="solar:check-circle-linear"></iconify-icon></span>
-                         <span>Grinding organic earth pigments</span>
+                         <span>Traditional motif extraction</span>
                       </div>
                     </div>
                   </div>
@@ -212,32 +254,43 @@ const Services = () => {
               </div>
               
               <div className="card-element relative w-full h-48 md:h-64 border bg-ebru-indigo/80 backdrop-blur-lg rounded-[2rem] overflow-hidden mb-6 flex items-center justify-center border-white/20 shadow-inner">
-                <div className="relative w-full h-full flex items-center justify-center scale-75 md:scale-100">
-                  <div className="absolute border rounded-full border-ebru-red/30 w-64 h-64 animate-[spin_25s_linear_infinite]"></div>
-                  <div className="absolute border rounded-full border-ebru-ochre/30 w-48 h-48 animate-[spin_20s_linear_infinite_reverse]"></div>
-                  <div className="absolute border rounded-full border-white/30 w-32 h-32 animate-pulse"></div>
-                  
-                  <div className="relative z-10 w-14 h-14 bg-white/10 rounded-full flex items-center justify-center border border-white/40 shadow-[0_0_30px_rgba(255,255,255,0.15)] animate-fluid">
-                    <iconify-icon icon="solar:palette-round-linear" width="28" height="28" class="text-white"></iconify-icon>
-                  </div>
+                {/* Taraklı Ebru (Combed Pattern) Animation */}
+                <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+                   <svg className="w-full h-full scale-125 md:scale-110" viewBox="0 0 400 200" preserveAspectRatio="none">
+                      {/* Base "Stones" patterns */}
+                      <g opacity="0.4">
+                         {[...Array(8)].map((_, i) => (
+                           <g key={i}>
+                              {[...Array(4)].map((_, j) => (
+                                 <circle key={j} cx={50 + i * 45} cy={30 + j * 45} r="20" fill={i % 2 === 0 ? "#991b1b" : "#d97706"}>
+                                    <animate attributeName="r" values="18;22;18" dur="3s" repeatCount="indefinite" begin={`${(i+j)*0.2}s`} />
+                                 </circle>
+                              ))}
+                           </g>
+                         ))}
+                      </g>
+                      
+                      {/* Comb (Tarak) motion that 'distorts' the pattern */}
+                      <rect x="0" y="0" width="400" height="200" fill="none">
+                         <animate attributeName="x" from="-400" to="400" dur="4s" repeatCount="indefinite" />
+                      </rect>
+                      
+                      {/* Moving wave lines representing the comb dragging */}
+                      <g stroke="white" strokeWidth="1" strokeOpacity="0.5" fill="none">
+                        {[...Array(6)].map((_, i) => (
+                          <path key={i} d={`M-50 ${20 + i * 35} Q 0 ${10 + i * 35}, 50 ${20 + i * 35} T 150 ${20 + i * 35} T 250 ${20 + i * 35} T 350 ${20 + i * 35} T 450 ${20 + i * 35}`}>
+                            <animateTransform attributeName="transform" type="translate" from="0 0" to="-100 0" dur="3s" repeatCount="indefinite" />
+                          </path>
+                        ))}
+                      </g>
 
-                  <div className="absolute top-1/4 right-1/4 transform translate-x-6 -translate-y-6">
-                    <div className="w-10 h-10 bg-ebru-red/20 border border-ebru-red/50 rounded-full flex items-center justify-center backdrop-blur-md animate-bounce" style={{ animationDuration: '3.5s' }}>
-                      <iconify-icon icon="solar:brush-linear" width="18" height="18" class="text-ebru-red"></iconify-icon>
-                    </div>
-                  </div>
-
-                  <div className="absolute bottom-1/3 left-1/4 transform -translate-x-6 translate-y-4">
-                    <div className="w-10 h-10 bg-ebru-ochre/20 border border-ebru-ochre/50 rounded-full flex items-center justify-center backdrop-blur-md animate-bounce" style={{ animationDuration: '4.5s', animationDelay: '1s' }}>
-                       <iconify-icon icon="solar:dropper-linear" width="18" height="18" class="text-ebru-ochre"></iconify-icon>
-                    </div>
-                  </div>
-
-                  <div className="absolute bottom-1/4 right-1/3 transform translate-x-4 translate-y-6">
-                    <div className="w-10 h-10 bg-white/20 border border-white/50 rounded-full flex items-center justify-center backdrop-blur-md animate-bounce" style={{ animationDuration: '4s', animationDelay: '0.5s' }}>
-                      <iconify-icon icon="solar:bucket-linear" width="18" height="18" class="text-white"></iconify-icon>
-                    </div>
-                  </div>
+                      {/* Tool Overlay */}
+                      <text x="20" y="30" fill="white" fontSize="8" fontBold="true" opacity="0.6" className="tracking-widest uppercase">Taraklı Pattern Analysis</text>
+                      <line x1="50" y1="10" x2="50" y2="190" stroke="white" strokeWidth="2" strokeDasharray="5 5">
+                         <animate attributeName="x1" from="0" to="400" dur="4s" repeatCount="indefinite" />
+                         <animate attributeName="x2" from="0" to="400" dur="4s" repeatCount="indefinite" />
+                      </line>
+                   </svg>
                 </div>
               </div>
               

@@ -11,7 +11,7 @@ const Navbar = () => {
             <div className="flex overflow-hidden text-white w-7 h-7 md:w-8 md:h-8 max-w-full rounded-full items-center justify-center bg-ebru-ochre/20 border border-ebru-ochre/40">
               <iconify-icon icon="solar:waterdrops-linear" width="18" height="18"></iconify-icon>
             </div>
-            <span className="text-base md:text-lg font-semibold text-white tracking-tight font-display text-left">EBRU<span className="font-light text-white">STUDIO</span></span>
+            <span className="text-base md:text-lg font-semibold text-white tracking-tight font-display text-left">EBRU<span className="font-light text-white">TERAPIA</span></span>
           </a>
           
           <div className="hidden md:flex items-center gap-12">

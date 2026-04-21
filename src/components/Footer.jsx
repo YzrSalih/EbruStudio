@@ -14,7 +14,7 @@ const Footer = () => {
               <div className="flex overflow-hidden text-white w-8 h-8 max-w-full rounded-full items-center justify-center bg-ebru-ochre/20 border border-white/40">
                 <iconify-icon icon="solar:waterdrops-linear" width="20" height="20"></iconify-icon>
               </div>
-              <span className="text-lg font-bold text-white tracking-tight font-display">EBRU<span className="font-light text-white">STUDIO</span></span>
+              <span className="text-lg font-bold text-white tracking-tight font-display">EBRU<span className="font-light text-white">TERAPIA</span></span>
             </a>
             <p className="text-sm leading-relaxed max-w-xs text-white">
               Preserving the ancient art of painting on water. Istanbul, London, New York.
@@ -60,7 +60,7 @@ const Footer = () => {
         </div>
 
         <div className="pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4 border-white/10">
-          <div className="text-[10px] font-bold uppercase text-white tracking-widest text-center md:text-left">© 2025 EBRU STUDIO. All Rights Reserved.</div>
+          <div className="text-[10px] font-bold uppercase text-white tracking-widest text-center md:text-left">© 2025 EBRUTERAPIA. All Rights Reserved.</div>
           <div className="flex gap-6 text-[10px] font-bold uppercase tracking-widest text-white">
             <a href="#" className="transition-colors hover:text-gray-300">Privacy Policy</a>
             <a href="#" className="transition-colors hover:text-gray-300">Terms of Service</a>
