@@ -85,13 +85,11 @@ const Services = () => {
                          </path>
                          
                          {/* Petals - Left */}
-                         <path d="M0 0 Q -30 -20, -10 -60 Q 0 -40, 0 0" fill="none" stroke="#991b1b" strokeWidth="1.5" strokeDasharray="200" strokeDashoffset="200">
-                            <animate attributeName="stroke-dashoffset" from="200" to="0" dur="3s" repeatCount="indefinite" />
-                         </path>
+                         <path d="M0 0 Q -30 -20, -10 -60 Q 0 -40, 0 0" fill="none" stroke="#991b1b" strokeWidth="1.5" strokeDasharray="200" strokeDashoffset="200" style={{ animation: 'draw 3s linear infinite' }} />
+                         
                          {/* Petals - Right */}
-                         <path d="M0 0 Q 30 -20, 10 -60 Q 0 -40, 0 0" fill="none" stroke="#991b1b" strokeWidth="1.5" strokeDasharray="200" strokeDashoffset="200">
-                            <animate attributeName="stroke-dashoffset" from="200" to="0" dur="3s" repeatCount="indefinite" />
-                         </path>
+                         <path d="M0 0 Q 30 -20, 10 -60 Q 0 -40, 0 0" fill="none" stroke="#991b1b" strokeWidth="1.5" strokeDasharray="200" strokeDashoffset="200" style={{ animation: 'draw 3s linear infinite' }} />
+
                          {/* Petals - Middle */}
                          <path d="M0 0 Q 0 -30, 0 -80" stroke="white" strokeWidth="0.8" strokeOpacity="0.6" fill="none" strokeDasharray="5 5">
                             <animate attributeName="y2" from="0" to="-80" dur="2s" repeatCount="indefinite" />
@@ -135,18 +133,13 @@ const Services = () => {
                    </g>
                    <g transform="translate(150, 80)">
                       {/* Central Petals drawing */}
-                      <path d="M0 -30 Q 15 -15, 0 0 Q -15 -15, 0 -30" fill="none" stroke="#991b1b" strokeWidth="1" strokeDasharray="100" strokeDashoffset="100">
-                         <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite" />
-                      </path>
-                      <path d="M30 0 Q 15 15, 0 0 Q 15 -15, 30 0" fill="none" stroke="#d97706" strokeWidth="1" strokeDasharray="100" strokeDashoffset="100">
-                         <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite" begin="0.7s" />
-                      </path>
-                      <path d="M0 30 Q -15 15, 0 0 Q 15 15, 0 30" fill="none" stroke="white" strokeWidth="1" strokeDasharray="100" strokeDashoffset="100">
-                         <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite" begin="1.4s" />
-                      </path>
-                      <path d="M-30 0 Q -15 -15, 0 0 Q -15 15, -30 0" fill="none" stroke="#991b1b" strokeWidth="1" strokeDasharray="100" strokeDashoffset="100">
-                         <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite" begin="2.1s" />
-                      </path>
+                      <path d="M0 -30 Q 15 -15, 0 0 Q -15 -15, 0 -30" fill="none" stroke="#991b1b" strokeWidth="1" strokeDasharray="100" strokeDashoffset="100" style={{ animation: 'draw-short 3s linear infinite' }} />
+                      
+                      <path d="M30 0 Q 15 15, 0 0 Q 15 -15, 30 0" fill="none" stroke="#d97706" strokeWidth="1" strokeDasharray="100" strokeDashoffset="100" style={{ animation: 'draw-short 3s linear infinite', animationDelay: '0.7s' }} />
+                      
+                      <path d="M0 30 Q -15 15, 0 0 Q 15 15, 0 30" fill="none" stroke="white" strokeWidth="1" strokeDasharray="100" strokeDashoffset="100" style={{ animation: 'draw-short 3s linear infinite', animationDelay: '1.4s' }} />
+                      
+                      <path d="M-30 0 Q -15 -15, 0 0 Q -15 15, -30 0" fill="none" stroke="#991b1b" strokeWidth="1" strokeDasharray="100" strokeDashoffset="100" style={{ animation: 'draw-short 3s linear infinite', animationDelay: '2.1s' }} />
                    </g>
                    <text x="30" y="25" fill="white" fontSize="6" opacity="0.4">MOTIF_GEOMETRY_V4</text>
                    <text x="30" y="145" fill="white" fontSize="5" opacity="0.5">SYMMETRY: OPTIMAL</text>
