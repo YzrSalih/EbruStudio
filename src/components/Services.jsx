@@ -85,12 +85,12 @@ const Services = () => {
                          </path>
                          
                          {/* Petals - Left */}
-                         <path d="M0 0 Q -30 -20, -10 -60 Q 0 -40, 0 0" fill="none" stroke="#991b1b" strokeWidth="1.5">
-                            <animate attributeName="stroke-dasharray" from="0, 200" to="200, 0" dur="3s" repeatCount="indefinite" />
+                         <path d="M0 0 Q -30 -20, -10 -60 Q 0 -40, 0 0" fill="none" stroke="#991b1b" strokeWidth="1.5" strokeDasharray="200" strokeDashoffset="200">
+                            <animate attributeName="stroke-dashoffset" from="200" to="0" dur="3s" repeatCount="indefinite" />
                          </path>
                          {/* Petals - Right */}
-                         <path d="M0 0 Q 30 -20, 10 -60 Q 0 -40, 0 0" fill="none" stroke="#991b1b" strokeWidth="1.5">
-                            <animate attributeName="stroke-dasharray" from="0, 200" to="200, 0" dur="3s" repeatCount="indefinite" />
+                         <path d="M0 0 Q 30 -20, 10 -60 Q 0 -40, 0 0" fill="none" stroke="#991b1b" strokeWidth="1.5" strokeDasharray="200" strokeDashoffset="200">
+                            <animate attributeName="stroke-dashoffset" from="200" to="0" dur="3s" repeatCount="indefinite" />
                          </path>
                          {/* Petals - Middle */}
                          <path d="M0 0 Q 0 -30, 0 -80" stroke="white" strokeWidth="0.8" strokeOpacity="0.6" fill="none" strokeDasharray="5 5">
@@ -107,11 +107,11 @@ const Services = () => {
                       <text x="100" y="35" fill="white" fontSize="5" opacity="0.4" textAnchor="middle">WIDTH: 80.0px</text>
 
                       {/* Technical Labels */}
-                      <text x="10" y="25" fill="white" fontSize="6" opacity="0.4" className="font-mono">TULIP_GEOMETRY_#{52}</text>
-                      <text x="10" y="185" fill="white" fontSize="5" opacity="0.5">CURVE_STABILITY: 100%</text>
+                      <text x="35" y="25" fill="white" fontSize="6" opacity="0.4" className="font-mono">TULIP_GEOMETRY_#{52}</text>
+                      <text x="35" y="185" fill="white" fontSize="5" opacity="0.5">CURVE_STABILITY: 100%</text>
                       
                       {/* Corner Markers */}
-                      <path d="M10 40 V10 H40" fill="none" stroke="white" strokeWidth="1" strokeOpacity="0.5" />
+                      <path d="M25 40 V25 H40" fill="none" stroke="white" strokeWidth="1" strokeOpacity="0.5" />
                    </svg>
                 </div>
               </div>
@@ -134,21 +134,22 @@ const Services = () => {
                       <line x1="150" y1="20" x2="150" y2="140" />
                    </g>
                    <g transform="translate(150, 80)">
-                      <path d="M0 -30 Q 15 -15, 0 0 Q -15 -15, 0 -30" fill="none" stroke="#991b1b" strokeWidth="1">
-                         <animate attributeName="stroke-dasharray" from="0, 100" to="100, 0" dur="3s" repeatCount="indefinite" />
+                      {/* Central Petals drawing */}
+                      <path d="M0 -30 Q 15 -15, 0 0 Q -15 -15, 0 -30" fill="none" stroke="#991b1b" strokeWidth="1" strokeDasharray="100" strokeDashoffset="100">
+                         <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite" />
                       </path>
-                      <path d="M30 0 Q 15 15, 0 0 Q 15 -15, 30 0" fill="none" stroke="#d97706" strokeWidth="1">
-                         <animate attributeName="stroke-dasharray" from="0, 100" to="100, 0" dur="3s" repeatCount="indefinite" begin="0.7s" />
+                      <path d="M30 0 Q 15 15, 0 0 Q 15 -15, 30 0" fill="none" stroke="#d97706" strokeWidth="1" strokeDasharray="100" strokeDashoffset="100">
+                         <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite" begin="0.7s" />
                       </path>
-                      <path d="M0 30 Q -15 15, 0 0 Q 15 15, 0 30" fill="none" stroke="white" strokeWidth="1">
-                         <animate attributeName="stroke-dasharray" from="0, 100" to="100, 0" dur="3s" repeatCount="indefinite" begin="1.4s" />
+                      <path d="M0 30 Q -15 15, 0 0 Q 15 15, 0 30" fill="none" stroke="white" strokeWidth="1" strokeDasharray="100" strokeDashoffset="100">
+                         <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite" begin="1.4s" />
                       </path>
-                      <path d="M-30 0 Q -15 -15, 0 0 Q -15 15, -30 0" fill="none" stroke="#991b1b" strokeWidth="1">
-                         <animate attributeName="stroke-dasharray" from="0, 100" to="100, 0" dur="3s" repeatCount="indefinite" begin="2.1s" />
+                      <path d="M-30 0 Q -15 -15, 0 0 Q -15 15, -30 0" fill="none" stroke="#991b1b" strokeWidth="1" strokeDasharray="100" strokeDashoffset="100">
+                         <animate attributeName="stroke-dashoffset" from="100" to="0" dur="3s" repeatCount="indefinite" begin="2.1s" />
                       </path>
                    </g>
-                   <text x="10" y="25" fill="white" fontSize="6" opacity="0.4">MOTIF_GEOMETRY_V4</text>
-                   <text x="10" y="145" fill="white" fontSize="5" opacity="0.5">SYMMETRY: OPTIMAL</text>
+                   <text x="30" y="25" fill="white" fontSize="6" opacity="0.4">MOTIF_GEOMETRY_V4</text>
+                   <text x="30" y="145" fill="white" fontSize="5" opacity="0.5">SYMMETRY: OPTIMAL</text>
                 </svg>
                 <div className="absolute top-4 right-6 flex items-center gap-2">
                    <div className="w-1.5 h-1.5 rounded-full bg-ebru-red animate-pulse"></div>
@@ -168,7 +169,7 @@ const Services = () => {
               
               <div className="card-element relative w-full h-48 md:h-64 border bg-ebru-indigo/80 backdrop-blur-lg rounded-[2rem] overflow-hidden mb-6 flex items-center justify-center border-white/20 shadow-inner">
                 <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
-                   <svg className="w-full h-full scale-125 md:scale-110" viewBox="0 0 400 200" preserveAspectRatio="none">
+                   <svg className="w-full h-full" viewBox="0 0 400 200" preserveAspectRatio="none">
                       <g opacity="0.4">
                          {[...Array(8)].map((_, i) => (
                            <g key={i}>
@@ -187,7 +188,7 @@ const Services = () => {
                           </path>
                         ))}
                       </g>
-                      <text x="20" y="30" fill="white" fontSize="8" opacity="0.6" className="tracking-widest uppercase">Taraklı Pattern Analysis</text>
+                      <text x="35" y="30" fill="white" fontSize="8" opacity="0.6" className="tracking-widest uppercase">Taraklı Pattern Analysis</text>
                    </svg>
                 </div>
               </div>
