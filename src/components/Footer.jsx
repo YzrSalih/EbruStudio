@@ -8,13 +8,20 @@ const Footer = () => {
       <div className="absolute -top-[150px] left-1/2 -translate-x-1/2 w-[300px] md:w-[600px] h-[300px] blur-[100px] rounded-full pointer-events-none mix-blend-screen bg-ebru-ochre/10"></div>
 
       <div className="max-w-[1400px] mx-auto px-4 md:px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 mb-16 md:mb-20">
-          <div className="lg:col-span-1 space-y-6">
-            <a href="#" className="flex items-center gap-3">
-              <div className="flex overflow-hidden text-white w-8 h-8 max-w-full rounded-full items-center justify-center bg-ebru-ochre/20 border border-white/40">
-                <iconify-icon icon="solar:waterdrops-linear" width="20" height="20"></iconify-icon>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-8 mb-16 md:mb-20">
+          <div className="lg:col-span-2">
+            <a href="/" className="flex items-center gap-4 group mb-6">
+              <div className="relative w-10 h-10 flex items-center justify-center">
+                {/* Minimalist Zen Tulip Logo */}
+                <svg viewBox="0 0 40 40" className="w-full h-full fill-none stroke-ebru-ochre group-hover:drop-shadow-[0_0_8px_rgba(217,119,6,0.6)] transition-all duration-500">
+                  <path d="M20 32 Q 10 25, 12 12 Q 20 20, 20 32" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M20 32 Q 30 25, 28 12 Q 20 20, 20 32" strokeWidth="2" strokeLinecap="round" />
+                  <path d="M20 32 V 8" strokeWidth="1" strokeDasharray="2 2" opacity="0.4" />
+                </svg>
               </div>
-              <span className="text-lg font-bold text-white tracking-tight font-display">EBRU<span className="font-light text-white">TERAPIA</span></span>
+              <span className="text-xl md:text-2xl font-display font-medium tracking-[0.2em] text-white group-hover:text-ebru-ochre transition-colors duration-300 uppercase">
+                EBRU<span className="font-light opacity-60">TERAPIA</span>
+              </span>
             </a>
             <p className="text-sm leading-relaxed max-w-xs text-white">
               Preserving the ancient art of painting on water. Istanbul, London, New York.
