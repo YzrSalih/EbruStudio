@@ -7,11 +7,21 @@ const Navbar = () => {
     <nav className="fixed transition-transform duration-300 z-50 pt-4 px-4 md:pt-6 md:px-6 top-0 right-0 left-0" id="navbar">
       <div className="flex flex-col glass max-w-[1600px] rounded-fluid md:rounded-fluid mr-auto ml-auto px-4 py-3 md:px-8 items-center justify-between transition-all duration-300">
         <div className="flex w-full items-center justify-between">
-          <a href="#" className="flex items-center gap-3 group hover-trigger">
-            <div className="flex overflow-hidden text-white w-7 h-7 md:w-8 md:h-8 max-w-full rounded-full items-center justify-center bg-ebru-ochre/20 border border-ebru-ochre/40">
-              <iconify-icon icon="solar:waterdrops-linear" width="18" height="18"></iconify-icon>
+          <a href="/" className="flex items-center gap-4 group">
+            <div className="relative w-10 h-10 flex items-center justify-center">
+              {/* Minimalist Zen Tulip Logo */}
+              <svg viewBox="0 0 40 40" className="w-full h-full fill-none stroke-ebru-ochre group-hover:drop-shadow-[0_0_8px_rgba(217,119,6,0.6)] transition-all duration-500">
+                {/* Left Petal arc */}
+                <path d="M20 32 Q 10 25, 12 12 Q 20 20, 20 32" strokeWidth="2" strokeLinecap="round" />
+                {/* Right Petal arc */}
+                <path d="M20 32 Q 30 25, 28 12 Q 20 20, 20 32" strokeWidth="2" strokeLinecap="round" />
+                {/* Middle Stem/Petal Detail */}
+                <path d="M20 32 V 8" strokeWidth="1" strokeDasharray="2 2" opacity="0.4" />
+              </svg>
             </div>
-            <span className="text-base md:text-lg font-semibold text-white tracking-tight font-display text-left">EBRU<span className="font-light text-white">TERAPIA</span></span>
+            <span className="text-xl md:text-2xl font-display font-medium tracking-[0.2em] text-white group-hover:text-ebru-ochre transition-colors duration-300 uppercase">
+              EBRU<span className="font-light opacity-60">TERAPIA</span>
+            </span>
           </a>
           
           <div className="hidden md:flex items-center gap-12">
