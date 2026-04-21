@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cursor-size: 20px;
+}
+
+/* Override existing locked background components from App.jsx */
+.video-background-container,
+.aura-background-component {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  background-color: #0b0a1a; /* Deep Charcoal / Indigo */
+  background-image: 
+    linear-gradient(rgba(11, 10, 26, 0.95), rgba(11, 10, 26, 0.95)),
+    url('https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=2000&auto=format&fit=crop');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body { cursor: none; }
+}
+
+/* --- CUSTOM CURSOR --- */
+#cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: var(--cursor-size); height: var(--cursor-size);
+  border: 1px solid rgba(217, 119, 6, 0.6); /* Ochre Yellow */
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s, background-color 0.3s, border-color 0.3s;
+  mix-blend-mode: normal;
+  display: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  #cursor { display: block; }
+}
+#cursor.hovered {
+  width: 50px; height: 50px;
+  background-color: rgba(255, 255, 255, 0.9); /* Pure White */
+  border-color: transparent;
+  mix-blend-mode: exclusion;
+}
+#cursor.view-cursor {
+  width: 80px; height: 80px;
+  background-color: rgba(217, 119, 6, 0.2);
+  backdrop-filter: blur(2px);
+  border-color: rgba(217, 119, 6, 0.4);
+  display: flex; align-items: center; justify-content: center;
+}
+#cursor.view-cursor::after {
+  content: 'VIEW';
+  font-size: 10px; font-weight: 700; color: #ffffff;
+  letter-spacing: 1px;
+}
+
+/* --- UTILITIES --- */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.grayscale-img {
+  filter: sepia(30%) grayscale(60%);
+  transition: filter 0.5s ease, transform 0.7s ease;
+}
+.group:hover .grayscale-img {
+  filter: sepia(0%) grayscale(0%);
+  transform: scale(1.05);
+}
+
+/* --- 3D ANIMATIONS --- */
+.card-3d-wrap { perspective: 1000px; }
+.card-3d-inner {
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.card-element { transform: translateZ(40px); }
+
+/* --- MASK REVEAL --- */
+.mask-text { overflow: hidden; display: block; }
+.mask-text span {
+  display: block;
+  transform: translateY(110%);
+  will-change: transform;
+}
+
+/* --- NOISE TEXTURE --- */
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* --- ORGANIC ANIMATIONS --- */
+@keyframes fluid-flow {
+  0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+}
+.animate-fluid {
+  animation: fluid-flow 8s ease-in-out infinite;
+}
