@@ -33,7 +33,7 @@ const Navbar = () => {
           <div className="flex items-center gap-4">
             <button 
               className="uppercase transition-colors hover-trigger hover:bg-ebru-ochre/90 cursor-pointer text-xs font-semibold text-white tracking-wider bg-ebru-ochre rounded-fluid px-6 py-2.5 hidden md:block border border-white shadow-lg shadow-ebru-ochre/20" 
-              onClick={() => window.location.href='#services'} 
+              onClick={() => window.open('https://calendar.google.com/', '_blank')} // BURAYA GOOGLE CALENDAR APPOINTMENT LİNKİNİZİ EKLEYİN
               role="button"
             >
               BOOK WORKSHOP
@@ -56,7 +56,7 @@ const Navbar = () => {
             </div>
             <button 
               className="w-full uppercase transition-colors hover:bg-ebru-ochre/90 cursor-pointer text-xs font-semibold text-white border border-white tracking-wider bg-ebru-ochre rounded-fluid py-4 mt-2 shadow-lg shadow-ebru-ochre/20" 
-              onClick={() => window.location.href='#services'}
+              onClick={() => window.open('https://calendar.google.com/', '_blank')} // BURAYA GOOGLE CALENDAR APPOINTMENT LİNKİNİZİ EKLEYİN
             >
               BOOK WORKSHOP
             </button>
