@@ -2,77 +2,50 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="relative overflow-hidden border-t pt-16 md:pt-24 pb-8 md:pb-12 border-white/10 bg-ebru-indigo/95 backdrop-blur-md">
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent to-transparent opacity-50 via-white/40"></div>
-
-      <div className="absolute -top-[150px] left-1/2 -translate-x-1/2 w-[300px] md:w-[600px] h-[300px] blur-[100px] rounded-full pointer-events-none mix-blend-screen bg-ebru-ochre/10"></div>
-
-      <div className="max-w-[1400px] mx-auto px-4 md:px-6 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-8 mb-16 md:mb-20">
-          <div className="lg:col-span-2">
-            <a href="/" className="flex items-center gap-4 group mb-6">
-              <div className="relative w-10 h-10 flex items-center justify-center">
-                {/* Minimalist Zen Tulip Logo */}
-                <svg viewBox="0 0 40 40" className="w-full h-full fill-none stroke-ebru-ochre group-hover:drop-shadow-[0_0_8px_rgba(217,119,6,0.6)] transition-all duration-500">
-                  <path d="M20 32 Q 10 25, 12 12 Q 20 20, 20 32" strokeWidth="2" strokeLinecap="round" />
-                  <path d="M20 32 Q 30 25, 28 12 Q 20 20, 20 32" strokeWidth="2" strokeLinecap="round" />
-                  <path d="M20 32 V 8" strokeWidth="1" strokeDasharray="2 2" opacity="0.4" />
-                </svg>
-              </div>
-              <span className="text-xl md:text-2xl font-display font-medium tracking-[0.2em] text-white group-hover:text-ebru-ochre transition-colors duration-300 uppercase">
-                EBRU<span className="font-light opacity-60">TERAPIA</span>
-              </span>
-            </a>
-            <p className="text-sm leading-relaxed max-w-xs text-white">
-              Preserving the ancient art of painting on water. Istanbul, London, New York.
-            </p>
-          </div>
-
-          <div className="lg:col-span-2 grid grid-cols-2 md:grid-cols-3 gap-8">
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-widest mb-6 text-white">Explore</h4>
-              <ul className="space-y-4 text-sm font-medium text-white">
-                <li><a href="#" className="transition-colors hover:text-gray-300">Gallery</a></li>
-                <li><a href="#" className="transition-colors hover:text-gray-300">Workshops</a></li>
-                <li><a href="#" className="transition-colors hover:text-gray-300">Techniques</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-widest mb-6 text-white">Studio</h4>
-              <ul className="space-y-4 text-sm font-medium text-white">
-                <li><a href="#" className="transition-colors hover:text-gray-300">Supplies</a></li>
-                <li><a href="#" className="transition-colors hover:text-gray-300">Exhibitions</a></li>
-                <li><a href="#" className="transition-colors hover:text-gray-300">Contact</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-widest mb-6 text-white">Socials</h4>
-              <ul className="space-y-4 text-sm font-medium text-white">
-                <li><a href="#" className="transition-colors hover:text-gray-300">Instagram</a></li>
-                <li><a href="#" className="transition-colors hover:text-gray-300">Pinterest</a></li>
-                <li><a href="#" className="transition-colors hover:text-gray-300">YouTube</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="lg:col-span-1">
-            <h4 className="text-xs font-bold uppercase tracking-widest mb-6 text-white">Newsletter</h4>
-            <div className="relative">
-              <input type="email" placeholder="Email address" className="focus:outline-none focus:border-gray-400 transition-colors text-sm text-gray-800 bg-gray-100 placeholder-gray-500 w-full border-gray-300 border rounded-fluid pt-3.5 pr-4 pb-3.5 pl-5" />
-              <button className="absolute right-2 top-2 p-1.5 rounded-full transition-colors bg-ebru-ochre text-white hover:bg-ebru-ochre/80 flex items-center justify-center border border-white/20">
-                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-[16px] h-[16px]"><polyline points="9 18 15 12 9 6"></polyline></svg>
-              </button>
-            </div>
-          </div>
+    <footer className="w-full bg-ebru-petrol py-16 px-6 md:px-12 border-t border-white/5">
+      <div className="max-w-[1400px] w-full mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
+        
+        {/* Left Side - Logo */}
+        <div className="flex items-start group cursor-pointer">
+           <span className="text-3xl md:text-4xl font-display font-medium text-ebru-cream lowercase tracking-tight group-hover:text-ebru-gold transition-colors">
+             ebruterapia
+           </span>
+           <svg className="w-5 h-5 ml-2 mt-2 text-ebru-gold animate-pulse shadow-[0_0_15px_rgba(212,168,90,0.5)]" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" />
+           </svg>
+        </div>
+ 
+        {/* Center - Links */}
+        <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-4">
+          <a href="#hero" className="text-base font-sans font-medium text-ebru-cream/70 hover:text-ebru-gold transition-colors lowercase tracking-wide">anasayfa</a>
+          <a href="#work" className="text-base font-sans font-medium text-ebru-cream/70 hover:text-ebru-gold transition-colors lowercase tracking-wide">galeri</a>
+          <a href="#about" className="text-base font-sans font-medium text-ebru-cream/70 hover:text-ebru-gold transition-colors lowercase tracking-wide">hakkımda</a>
+          <a href="#journal" className="text-base font-sans font-medium text-ebru-cream/70 hover:text-ebru-gold transition-colors lowercase tracking-wide">defterim</a>
+          <a href="#contact" className="text-base font-sans font-medium text-ebru-cream/70 hover:text-ebru-gold transition-colors lowercase tracking-wide">iletişim</a>
         </div>
 
-        <div className="pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4 border-white/10">
-          <div className="text-[10px] font-bold uppercase text-white tracking-widest text-center md:text-left">© 2025 EBRUTERAPIA. All Rights Reserved.</div>
-          <div className="flex gap-6 text-[10px] font-bold uppercase tracking-widest text-white">
-            <a href="#" className="transition-colors hover:text-gray-300">Privacy Policy</a>
-            <a href="#" className="transition-colors hover:text-gray-300">Terms of Service</a>
-          </div>
+        {/* Right Side - Socials */}
+        <div className="flex flex-wrap justify-center items-center gap-6 text-ebru-cream/70">
+          <a href="#" className="hover:text-ebru-gold transition-colors">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+               <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+               <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+               <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="#" className="hover:text-ebru-gold transition-colors">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+               <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+          <a href="#" className="hover:text-ebru-gold transition-colors">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+               <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </a>
         </div>
+
       </div>
     </footer>
   );

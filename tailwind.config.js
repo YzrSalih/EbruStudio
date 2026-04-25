@@ -10,10 +10,14 @@ export default {
     extend: {
       colors: {
         ebru: {
-          indigo: '#0b0a1a', // Darkened Charcoal/Indigo for higher contrast
-          red: '#991b1b',    // Toprak Kırmızı (Earthy Red)
-          ochre: '#d97706',  // Sarı (Ochre Yellow)
-          cream: '#ffffff',  // Upgraded from off-white to pure bright white
+          petrol: '#1F5C5B',
+          teal: '#2FA7A0',
+          lightTeal: '#7FD6C2',
+          coral: '#F47C5E',
+          peach: '#F2B8A0',
+          cream: '#fdf6e3',
+          beige: '#E8D3B9',
+          gold: '#D4A85A',
         }
       },
       borderRadius: {
@@ -21,8 +25,9 @@ export default {
         'fluid-lg': '3rem',
       },
       fontFamily: {
-        sans: ['Manrope', 'sans-serif'],
-        display: ['Space Grotesk', 'sans-serif'],
+        sans: ['"Inter"', 'sans-serif'],
+        display: ['"Playfair Display"', 'serif'],
+        serif: ['"Playfair Display"', 'serif'],
       },
       screens: {
         'xs': '480px',

@@ -4,65 +4,67 @@ const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed transition-transform duration-300 z-50 pt-4 px-4 md:pt-6 md:px-6 top-0 right-0 left-0" id="navbar">
-      <div className="flex flex-col glass max-w-[1600px] rounded-fluid md:rounded-fluid mr-auto ml-auto px-4 py-3 md:px-8 items-center justify-between transition-all duration-300">
-        <div className="flex w-full items-center justify-between">
-          <a href="/" className="flex items-center gap-4 group">
-            <div className="relative w-10 h-10 flex items-center justify-center">
-              {/* Minimalist Zen Tulip Logo */}
-              <svg viewBox="0 0 40 40" className="w-full h-full fill-none stroke-ebru-ochre group-hover:drop-shadow-[0_0_8px_rgba(217,119,6,0.6)] transition-all duration-500">
-                {/* Left Petal arc */}
-                <path d="M20 32 Q 10 25, 12 12 Q 20 20, 20 32" strokeWidth="2" strokeLinecap="round" />
-                {/* Right Petal arc */}
-                <path d="M20 32 Q 30 25, 28 12 Q 20 20, 20 32" strokeWidth="2" strokeLinecap="round" />
-                {/* Middle Stem/Petal Detail */}
-                <path d="M20 32 V 8" strokeWidth="1" strokeDasharray="2 2" opacity="0.4" />
-              </svg>
-            </div>
-            <span className="text-xl md:text-2xl font-display font-medium tracking-[0.2em] text-white group-hover:text-ebru-ochre transition-colors duration-300 uppercase">
-              EBRU<span className="font-light opacity-60">TERAPIA</span>
-            </span>
-          </a>
+    <nav className="fixed z-50 top-0 left-0 right-0 py-6 md:py-8 px-6 md:px-12 w-full bg-ebru-cream/90 backdrop-blur-md border-b border-ebru-petrol/10" id="navbar">
+      <div className="flex max-w-[1400px] w-full mx-auto items-center justify-between">
+        
+        {/* LOGO */}
+        <a href="/" className="flex items-start group">
+           <span className="text-3xl md:text-4xl lg:text-[2.5rem] font-display font-medium text-ebru-petrol lowercase tracking-tight">
+             ebruterapia
+           </span>
+           <svg className="w-5 h-5 md:w-6 md:h-6 ml-1 md:ml-2 mt-1 md:mt-2 text-ebru-gold animate-pulse" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" />
+           </svg>
+        </a>
+        
+        {/* DESKTOP LINKS */}
+        <div className="hidden md:flex items-center gap-10 lg:gap-14">
+          <a href="#hero" className="text-[15px] lg:text-base font-sans font-medium text-ebru-petrol hover:text-ebru-gold transition-colors lowercase">anasayfa</a>
+          <a href="#work" className="text-[15px] lg:text-base font-sans font-medium text-ebru-petrol hover:text-ebru-gold transition-colors lowercase">galeri</a>
+          <a href="#about" className="text-[15px] lg:text-base font-sans font-medium text-ebru-petrol hover:text-ebru-gold transition-colors lowercase">hakkımda</a>
+          <a href="#journal" className="text-[15px] lg:text-base font-sans font-medium text-ebru-petrol hover:text-ebru-gold transition-colors lowercase">defterim</a>
+          <a href="#contact" className="text-[15px] lg:text-base font-sans font-medium text-ebru-petrol hover:text-ebru-gold transition-colors lowercase">iletişim</a>
           
-          <div className="hidden md:flex items-center gap-12">
-            <a href="#work" className="text-xs font-medium uppercase tracking-widest transition-colors hover-trigger hover:text-gray-300 text-white">Gallery</a>
-            <a href="#services" className="uppercase transition-colors hover-trigger hover:text-gray-300 text-xs font-medium text-white tracking-widest">Workshops</a>
-            <a href="#testimonials" className="uppercase transition-colors hover-trigger hover:text-gray-300 text-xs font-medium text-white tracking-widest">Stories</a>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <button 
-              className="uppercase transition-colors hover-trigger hover:bg-ebru-ochre/90 cursor-pointer text-xs font-semibold text-white tracking-wider bg-ebru-ochre rounded-fluid px-6 py-2.5 hidden md:block border border-white shadow-lg shadow-ebru-ochre/20" 
-              onClick={() => window.open('https://calendar.google.com/', '_blank')} // BURAYA GOOGLE CALENDAR APPOINTMENT LİNKİNİZİ EKLEYİN
-              role="button"
-            >
-              BOOK WORKSHOP
-            </button>
-            <button 
-              className="md:hidden text-white"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              <iconify-icon icon={mobileMenuOpen ? "solar:close-circle-linear" : "solar:hamburger-menu-linear"} width="24" height="24"></iconify-icon>
-            </button>
-          </div>
+          <button className="relative text-ebru-petrol hover:text-ebru-gold hover:rotate-12 transition-transform cursor-pointer ml-4 flex items-center justify-center">
+             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+             </svg>
+             <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" className="absolute -top-0.5 -right-1.5 text-ebru-gold animate-[pulse_2s_ease-in-out_infinite] shadow-sm">
+                <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" />
+             </svg>
+          </button>
         </div>
 
-        {mobileMenuOpen && (
-          <div className="mobile-menu w-full flex flex-col gap-6 pt-6 pb-4 border-t border-white/10 mt-4 md:hidden animate-fade-in bg-ebru-indigo/95 rounded-b-fluid backdrop-blur-xl">
-            <div className="flex flex-col gap-4 items-center">
-              <a href="#work" className="text-sm font-medium uppercase tracking-widest text-white hover:text-gray-300 w-full text-center py-3 border-b border-white/5" onClick={() => setMobileMenuOpen(false)}>Gallery</a>
-              <a href="#services" className="text-sm font-medium uppercase tracking-widest text-white hover:text-gray-300 w-full text-center py-3 border-b border-white/5" onClick={() => setMobileMenuOpen(false)}>Workshops</a>
-              <a href="#testimonials" className="text-sm font-medium uppercase tracking-widest text-white hover:text-gray-300 w-full text-center py-3" onClick={() => setMobileMenuOpen(false)}>Stories</a>
-            </div>
-            <button 
-              className="w-full uppercase transition-colors hover:bg-ebru-ochre/90 cursor-pointer text-xs font-semibold text-white border border-white tracking-wider bg-ebru-ochre rounded-fluid py-4 mt-2 shadow-lg shadow-ebru-ochre/20" 
-              onClick={() => window.open('https://calendar.google.com/', '_blank')} // BURAYA GOOGLE CALENDAR APPOINTMENT LİNKİNİZİ EKLEYİN
-            >
-              BOOK WORKSHOP
-            </button>
-          </div>
-        )}
+        {/* MOBILE MENU TOGGLE */}
+        <div className="flex items-center gap-5 md:hidden">
+          <button className="relative text-ebru-petrol hover:text-ebru-gold hover:rotate-12 transition-transform cursor-pointer flex items-center justify-center">
+             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+             </svg>
+             <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" className="absolute -top-0.5 -right-1.5 text-ebru-gold animate-[pulse_2s_ease-in-out_infinite] shadow-sm">
+                <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" />
+             </svg>
+          </button>
+          <button 
+            className="text-ebru-petrol hover:text-ebru-gold transition-colors block leading-none"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            <iconify-icon icon={mobileMenuOpen ? "solar:close-circle-linear" : "solar:hamburger-menu-linear"} width="30" height="30"></iconify-icon>
+          </button>
+        </div>
+
       </div>
+
+      {/* MOBILE MENU */}
+      {mobileMenuOpen && (
+        <div className="md:hidden absolute top-full left-0 w-full bg-ebru-cream shadow-xl shadow-ebru-petrol/5 border-t border-ebru-petrol/10 py-8 px-6 flex flex-col gap-6 items-center">
+          <a href="#hero" className="text-base font-sans font-medium text-ebru-petrol hover:text-ebru-gold lowercase" onClick={() => setMobileMenuOpen(false)}>anasayfa</a>
+          <a href="#work" className="text-base font-sans font-medium text-ebru-petrol hover:text-ebru-gold lowercase" onClick={() => setMobileMenuOpen(false)}>galeri</a>
+          <a href="#about" className="text-base font-sans font-medium text-ebru-petrol hover:text-ebru-gold lowercase" onClick={() => setMobileMenuOpen(false)}>hakkımda</a>
+          <a href="#journal" className="text-base font-sans font-medium text-ebru-petrol hover:text-ebru-gold lowercase" onClick={() => setMobileMenuOpen(false)}>defterim</a>
+          <a href="#contact" className="text-base font-sans font-medium text-ebru-petrol hover:text-ebru-gold lowercase" onClick={() => setMobileMenuOpen(false)}>iletişim</a>
+        </div>
+      )}
     </nav>
   );
 };
