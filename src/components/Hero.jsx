@@ -1,137 +1,62 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 
 const Hero = () => {
-  const canvasRef = useRef(null);
   const containerRef = useRef(null);
 
   useEffect(() => {
-    // GSAP Animations
-    const ctx = gsap.context(() => {
-      gsap.to('.mask-text span', {
-        y: 0,
-        duration: 1.2,
+    let ctx = gsap.context(() => {
+      gsap.from(".hero-text-anim", {
+        y: 30,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.2,
         ease: "power3.out",
-        stagger: 0.1
+        delay: 0.2
       });
-
-      gsap.to(".animate-fade-in", { opacity: 1, duration: 1, delay: 0.5 });
-      gsap.fromTo(".animate-fade-up", 
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 1, delay: 0.8, ease: "power2.out" }
-      );
     }, containerRef);
-
-    // Canvas Organic Fluid Animation (expanding drops)
-    const canvas = canvasRef.current;
-    const ctx2d = canvas.getContext('2d');
-    let width, height;
-    let drops = [];
-    const maxDrops = 15;
-    let animationFrameId;
-
-    class Drop {
-      constructor(w, h) {
-        this.w = w;
-        this.h = h;
-        this.reset();
-        // Stagger initial radiuses
-        this.radius = Math.random() * this.maxRadius;
-      }
-      reset() {
-        this.x = Math.random() * this.w;
-        this.y = Math.random() * this.h;
-        this.radius = 0;
-        this.maxRadius = Math.random() * 150 + 50;
-        this.speed = Math.random() * 0.4 + 0.1;
-        this.opacity = Math.random() * 0.4 + 0.1;
-      }
-      update() {
-        this.radius += this.speed;
-        this.opacity -= 0.0015;
-        if (this.opacity <= 0 || this.radius >= this.maxRadius) {
-          this.reset();
-        }
-      }
-      draw(ctx) {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(217, 119, 6, ${this.opacity})`; // Ochre
-        ctx.lineWidth = 1;
-        ctx.stroke();
-
-        // Inner circle for marbling effect
-        if (this.radius > 20) {
-          ctx.beginPath();
-          ctx.arc(this.x, this.y, this.radius - 15, 0, Math.PI * 2);
-          ctx.strokeStyle = `rgba(153, 27, 27, ${this.opacity * 0.5})`; // Earthy Red
-          ctx.stroke();
-        }
-      }
-    }
-
-    const initCanvas = () => {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = width;
-      canvas.height = height;
-      drops = [];
-      for (let i = 0; i < maxDrops; i++) {
-        drops.push(new Drop(width, height));
-      }
-    };
-
-    const animateCanvas = () => {
-      ctx2d.clearRect(0, 0, width, height);
-      drops.forEach(d => {
-        d.update();
-        d.draw(ctx2d);
-      });
-      animationFrameId = requestAnimationFrame(animateCanvas);
-    };
-
-    window.addEventListener('resize', initCanvas);
-    initCanvas();
-    animateCanvas();
-
-    return () => {
-      ctx.revert();
-      window.removeEventListener('resize', initCanvas);
-      cancelAnimationFrame(animationFrameId);
-    };
+    return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={containerRef} className="min-h-[100dvh] flex flex-col overflow-hidden z-10 md:px-6 pr-4 pl-4 relative items-center justify-center">
-      <canvas ref={canvasRef} className="pointer-events-none z-0 opacity-60 w-full h-full absolute top-0 right-0 bottom-0 left-0" id="hero-canvas"></canvas>
-      <div className="z-0 pointer-events-none bg-gradient-to-t from-ebru-indigo via-transparent to-ebru-indigo/90 absolute top-0 right-0 bottom-0 left-0"></div>
+    <section 
+      ref={containerRef} 
+      className="relative w-full h-[80vh] min-h-[600px] flex items-center px-6 md:px-12 overflow-hidden bg-ebru-cream" 
+      id="hero"
+    >
+      {/* BACKGROUND IMAGE - FULL RIGHT SIDE COVERAGE */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        {/* The Artwork - Filling the entire right side */}
+        <img 
+          src="/moon_marbling.png" 
+          alt="Ebru Moon" 
+          className="absolute right-0 top-0 h-full w-full md:w-2/3 object-cover opacity-95 transition-all duration-700"
+          style={{ objectPosition: 'center 15%' }}
+        />
+        {/* SMOOTH GRADIENT OVERLAY - FULL WIDTH TO PREVENT LINES */}
+        <div 
+          className="absolute inset-0 bg-gradient-to-r from-ebru-cream via-ebru-cream/80 to-transparent z-1" 
+        />
+      </div>
 
-      <div className="z-10 text-center max-w-[1400px] mr-auto ml-auto relative gap-x-12 gap-y-16">
-        <div className="inline-flex items-center gap-3 px-5 py-2 rounded-fluid border backdrop-blur-md mb-8 md:mb-12 hover-trigger opacity-0 animate-fade-in border-white/20 bg-white/5 shadow-lg shadow-ebru-indigo/50">
-          <span className="w-1.5 h-1.5 rounded-full animate-pulse bg-ebru-ochre"></span>
-          <span className="text-[10px] uppercase font-medium tracking-[0.2em] text-white">Traditional Art Studio</span>
-        </div>
-
-        <h1 className="font-display text-5xl sm:text-6xl md:text-8xl lg:text-[7rem] font-medium tracking-tighter leading-[0.95] mb-8 md:mb-12 mix-blend-normal text-white drop-shadow-2xl">
-          <span className="mask-text"><span>FLUID</span></span>
-          <span className="mask-text"><span className="text-white">EBRU</span></span>
-          <span className="mask-text"><span>ARTISTRY</span></span>
-        </h1>
-
-        <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-4xl mx-auto mt-8 md:mt-12 border-t pt-8 opacity-0 animate-fade-up border-white/20">
-          <p className="text-sm text-white text-center md:text-left max-w-xs mb-8 md:mb-0">Discover the ancient art of painting on water, where every drop tells a unique story.</p>
-          <div className="flex gap-12">
-            <div className="text-center md:text-left">
-              <div className="text-2xl font-bold font-display text-white">150+</div>
-              <div className="text-[10px] uppercase tracking-widest text-white">Workshops Hosted</div>
-            </div>
-            <div className="text-center md:text-left">
-              <div className="text-2xl font-bold font-display text-white">10K+</div>
-              <div className="text-[10px] uppercase tracking-widest text-white">Drops of Paint</div>
-            </div>
-          </div>
+      <div className="max-w-[1400px] w-full mx-auto relative z-10 pt-10">
+        <div className="w-full md:w-1/2 flex flex-col items-start text-left hero-text-anim">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-medium text-[#1F5C5B] leading-[1.1] mb-8 lowercase relative">
+            suyun <br/>
+            rüyası lehçe
+            <svg className="absolute -right-8 md:-right-10 top-12 w-6 h-6 text-ebru-gold animate-pulse drop-shadow-[0_0_15px_rgba(212,168,90,0.6)]" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" />
+            </svg>
+          </h1>
+          <p className="text-lg md:text-xl font-sans font-medium text-[#1F5C5B]/80 max-w-sm leading-relaxed mb-12">
+            Okunuşu akıcı, akılda kalıcı, estetik ve size özel. Ebru sanatının rüya gibi dokunuşları.
+          </p>
+          <button className="px-10 py-4 bg-[#1F5C5B] text-white text-base font-sans font-medium hover:bg-[#1F5C5B]/90 transition-all shadow-xl shadow-[#1F5C5B]/20">
+            Daha fazlası
+          </button>
         </div>
       </div>
+      
     </section>
   );
 };
