@@ -2,8 +2,6 @@ import React, { useEffect } from 'react';
 import Lenis from '@studio-freight/lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import UnicornScene from 'unicornstudio-react';
-
 import CustomCursor from './components/CustomCursor';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -41,40 +39,6 @@ function App() {
 
   return (
     <>
-      {/* Video Background */}
-      <div 
-        className="video-background-container fixed top-0 w-full h-full -z-10" 
-        data-alpha-mask="80" 
-        style={{ 
-          maskImage: 'linear-gradient(to bottom, transparent, black 0%, black 80%, transparent)', 
-          WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 0%, black 80%, transparent)' 
-        }}
-      >
-        <video 
-          src="https://drive.google.com/file/d/121QJWC0zeFW1IjL1vLchKsb1Ax1EHpCA/view?usp=sharing" 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
-          className="w-full h-full object-cover"
-        />
-      </div>
-
-      {/* Unicorn / Aura Background */}
-      <div 
-        className="aura-background-component inset-0 pointer-events-none z-0 fixed saturate-200 hue-rotate-180" 
-        data-alpha-mask="80" 
-        style={{ 
-          maskImage: 'linear-gradient(to bottom, transparent, black 0%, black 80%, transparent)',
-          WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 0%, black 80%, transparent)'
-        }}
-      >
-        <div className="aura-background-component top-0 w-full -z-10 absolute h-full">
-          <div className="absolute w-full h-full left-0 top-0 -z-10">
-             <UnicornScene projectId="FixNvEwvWwbu3QX9qC3F" />
-          </div>
-        </div>
-      </div>
 
       <CustomCursor />
       <Navbar />
