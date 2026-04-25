@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 const VideoCard = ({ embedId, badgeText, technique, duration, delayClass }) => {
   return (
     <div 
-      className={`video-card group relative aspect-[9/16] rounded-[32px] overflow-hidden bg-[#1a4d4b] border border-white/20 cursor-pointer shadow-2xl transition-all duration-700 hover:-translate-y-4`}
+      className="video-card group relative aspect-[9/16] rounded-[32px] overflow-hidden bg-[#1a4d4b] border border-white/20 cursor-pointer shadow-2xl transition-all duration-700 hover:-translate-y-4 opacity-0"
       style={delayClass ? { transitionDelay: delayClass } : {}}
     >
       {/* YouTube Embed Container */}
@@ -49,45 +49,61 @@ const VideoCard = ({ embedId, badgeText, technique, duration, delayClass }) => {
 const Work = () => {
   const containerRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     let ctx = gsap.context(() => {
-      gsap.from(".work-title-anim", {
+      // Title Animation
+      gsap.to(".work-title-anim", {
         scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 80%",
+          trigger: ".work-title-anim",
+          start: "top 90%",
+          toggleActions: "play none none none"
         },
-        y: 40,
-        opacity: 0,
+        y: 0,
+        opacity: 1,
         duration: 1,
         ease: "power3.out"
       });
-      gsap.from(".video-card", {
+
+      // Cards Animation
+      gsap.to(".video-card", {
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 70%",
+          start: "top 75%",
+          toggleActions: "play none none none"
         },
-        y: 60,
-        opacity: 0,
+        y: 0,
+        opacity: 1,
         duration: 1,
-        stagger: 0.2,
-        ease: "power3.out"
+        stagger: 0.15,
+        ease: "power3.out",
+        onComplete: () => {
+          ScrollTrigger.refresh();
+        }
       });
     }, containerRef);
-    return () => ctx.revert();
+
+    // Force a refresh after a small delay to catch production rendering issues
+    const timer = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 500);
+
+    return () => {
+      ctx.revert();
+      clearTimeout(timer);
+    };
   }, []);
 
   return (
     <section ref={containerRef} className="py-24 md:py-40 px-6 md:px-12 bg-ebru-petrol relative overflow-hidden" id="work">
-      {/* Texture Overlay */}
       <div className="absolute inset-0 opacity-5 mix-blend-overlay pointer-events-none grayscale bg-[url('https://www.transparenttextures.com/patterns/paper.png')]"></div>
       
       <div className="max-w-[1400px] mx-auto relative z-10">
-        <div className="mb-20 work-title-anim text-left">
+        <div className="mb-20 work-title-anim opacity-0 translate-y-10 text-left">
           <h2 className="text-4xl md:text-7xl font-display font-medium text-white mb-6 lowercase">
             ebru galerisi
           </h2>
           <p className="text-lg text-white/70 max-w-2xl font-sans italic">
-            "Suyun üzerindeki renklerin hipnotik dansına tanıklık edin. Her eser, bir rüyanın suya yansımasıdır."
+            "Renklerin su üzerindeki sessiz şiiri. Her eser, bir rüyanın suya yansımasıdır."
           </p>
         </div>
 
@@ -103,14 +119,12 @@ const Work = () => {
             badgeText="Soyut"
             technique="Gelgit Ebru"
             duration="Özel Çalışma"
-            delayClass="100ms"
           />
           <VideoCard 
             embedId="BvH_V0n5S-g"
             badgeText="Lale"
             technique="Çiçekli Ebru"
             duration="Sergi Hazırlığı"
-            delayClass="200ms"
           />
         </div>
       </div>
